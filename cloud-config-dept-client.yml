@@ -1,79 +1,105 @@
 spring:
   profiles:
     active:
-    - default    
+    - provider8001
 ---
 server:
   port: 8001
 mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件所在路径
-  type-aliases-package: com.cloud.springcloud.entities    # 所有entities包下面的Entity都默认起别名
+  config-location: classpath:mybatis/mybatis.cfg.xml
   mapper-locations:
-  - classpath:mybatis/mapper/**/*.xml                   # 指定mapper文件所路径
-  
+  - classpath:mybatis/mapper/**/*.xml
 spring:
-  profiles: default
   application:
-    name: cloud-dept                        # 指定应用名称
+    name: cloud-provider-dept
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource        # 指定数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/clouddb01
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/cloudDB01
-    driver-class-name: com.mysql.cj.jdbc.Driver         # org.gjt.mm.mysql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     dbcp2:
-      min-idle: 5
-      initial-size: 5
-      max-total: 5
+      min-idle: 3
+      max-total: 8
+      initial-size: 8
       max-wait-millis: 200
-
-      
 eureka:
-  client:                                               # 客户端注册进eureka服务列表内
+  client:
     service-url: 
-      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
   instance:
-    instance-id: cloud-config-dept-client
+    instance-id: cloud-provider-dept-8001
     prefer-ip-address: true
-
-info: 
-  app.name: cloud-springcloud-config-01
+info:
+  app.name: cloud-dept-provider-8001
   company.name: www.cloud.com
   build.artifactId: $project.artifactId$
-  build.version: $project.version$      
+  build.version: $project.version$
+  
 ---
 server:
   port: 8002
 mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件所在路径
-  type-aliases-package: com.cloud.springcloud.entities    # 所有entities包下面的Entity都默认起别名
+  config-location: classpath:mybatis/mybatis.cfg.xml
   mapper-locations:
-  - classpath:mybatis/mapper/**/*.xml                   # 指定mapper文件所路径
-  
+  - classpath:mybatis/mapper/**/*.xml
 spring:
-  profiles: test
   application:
-    name: cloud-dept                        # 指定应用名称
+    name: cloud-provider-dept
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource        # 指定数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/clouddb02
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/cloudDB02
-    driver-class-name: com.mysql.cj.jdbc.Driver         # org.gjt.mm.mysql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     dbcp2:
-      min-idle: 5
-      initial-size: 5
-      max-total: 5
-      max-wait-millis: 200 
+      min-idle: 3
+      max-total: 8
+      initial-size: 8
+      max-wait-millis: 200
 eureka:
-  client:                                               # 客户端注册进eureka服务列表内
+  client:
     service-url: 
-      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
   instance:
-    instance-id: cloud-config-dept-client
-    prefer-ip-address: true      
-info: 
-  app.name: cloud-springcloud-config-02
+    instance-id: cloud-provider-dept-8002
+    prefer-ip-address: true
+info:
+  app.name: cloud-dept-provider-8002
   company.name: www.cloud.com
   build.artifactId: $project.artifactId$
-  build.version: $project.version$      
+  build.version: $project.version$
+  
+---
+server:
+  port: 8003
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+spring:
+  application:
+    name: cloud-provider-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/clouddb03
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    dbcp2:
+      min-idle: 3
+      max-total: 8
+      initial-size: 8
+      max-wait-millis: 200
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: cloud-provider-dept-8003
+    prefer-ip-address: true
+info:
+  app.name: cloud-dept-provider-8003
+  company.name: www.cloud.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
