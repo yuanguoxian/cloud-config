@@ -12,7 +12,7 @@ spring:
 
 eureka:
   instance:
-    hostname: eureak7001.com
+    hostname: eureka7001.com
   client:
     register-with-eureka: false 	# 表示当前eureka-server自己不注册进服务注册中心
     fetch-registry: false	# 表示不通过eureka获取注册信息
@@ -28,7 +28,7 @@ spring:
 
 eureka:
   instance:
-    hostname: eureak7001.com
+    hostname: eureka7001.com
   client:
     register-with-eureka: false 	# 表示当前eureka-server自己不注册进服务注册中心
     fetch-registry: false	# 表示不通过eureka获取注册信息
