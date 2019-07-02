@@ -31,8 +31,10 @@ spring:
 eureka:
   client:                                               # 客户端注册进eureka服务列表内
     service-url: 
-      defaultZone: http://localhost:7001/eureka
-      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001:7001/eureka/
+    instance:
+      instance-id: cloud-config-dept-client
+      prefer-ip-address: true
 
 info: 
   app.name: cloud-springcloud-config-01
@@ -62,14 +64,14 @@ spring:
       min-idle: 5
       initial-size: 5
       max-total: 5
-      max-wait-millis: 200
-
-      
+      max-wait-millis: 200 
 eureka:
   client:                                               # 客户端注册进eureka服务列表内
     service-url: 
-      defaultZone: http://localhost:7001/eureka
-      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/      
+      defaultZone: http://eureka7001:7001/eureka/
+    instance:
+      instance-id: cloud-config-dept-client
+      prefer-ip-address: true      
 info: 
   app.name: cloud-springcloud-config-02
   company.name: www.cloud.com
