@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+server:
+  port: 7001
+spring:
+  profiles: dev
+    application:
+      name: cloud-config-eureka-client
+
+eureka:
+  instance:
+    hostname: eureak7001.com
+  client:
+    register-with-eureka: false 	# 表示当前eureka-server自己不注册进服务注册中心
+    fetch-registry: false	# 表示不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+---
+server:
+  port: 7002
+spring:
+  profiles: test
+    application:
+      name: cloud-config-eureka-client
+
+eureka:
+  instance:
+    hostname: eureak7001.com
+  client:
+    register-with-eureka: false 	# 表示当前eureka-server自己不注册进服务注册中心
+    fetch-registry: false	# 表示不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/

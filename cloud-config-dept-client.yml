@@ -1,0 +1,77 @@
+spring:
+  profiles:
+    active:
+    - dev    
+---
+server:
+  port: 8001
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件所在路径
+  type-aliases-package: com.cloud.springcloud.entities    # 所有entities包下面的Entity都默认起别名
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                   # 指定mapper文件所路径
+  
+spring:
+  profiles: dev
+  application:
+    name: cloud-dept                        # 指定应用名称
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource        # 指定数据源操作类型
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    driver-class-name: com.mysql.cj.jdbc.Driver         # org.gjt.mm.mysql.Driver
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+      
+eureka:
+  client:                                               # 客户端注册进eureka服务列表内
+    service-url: 
+      defaultZone: http://localhost:7001/eureka
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+info: 
+  app.name: cloud-springcloud-config-01
+  company.name: www.cloud.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$      
+---
+server:
+  port: 8002
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件所在路径
+  type-aliases-package: com.cloud.springcloud.entities    # 所有entities包下面的Entity都默认起别名
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                   # 指定mapper文件所路径
+  
+spring:
+  profiles: test
+  application:
+    name: cloud-dept                        # 指定应用名称
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource        # 指定数据源操作类型
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    driver-class-name: com.mysql.cj.jdbc.Driver         # org.gjt.mm.mysql.Driver
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+      
+eureka:
+  client:                                               # 客户端注册进eureka服务列表内
+    service-url: 
+      defaultZone: http://localhost:7001/eureka
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/      
+info: 
+  app.name: cloud-springcloud-config-02
+  company.name: www.cloud.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$      
