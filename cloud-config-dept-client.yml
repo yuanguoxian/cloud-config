@@ -31,7 +31,7 @@ spring:
 eureka:
   client:                                               # 客户端注册进eureka服务列表内
     service-url: 
-      defaultZone: http://eureka7001:7001/eureka/
+      defaultZone: http://localhost:7001/eureka/
     instance:
       instance-id: cloud-config-dept-client
       prefer-ip-address: true
@@ -68,7 +68,7 @@ spring:
 eureka:
   client:                                               # 客户端注册进eureka服务列表内
     service-url: 
-      defaultZone: http://eureka7001:7001/eureka/
+      defaultZone: http://localhost:7001/eureka/
     instance:
       instance-id: cloud-config-dept-client
       prefer-ip-address: true      
