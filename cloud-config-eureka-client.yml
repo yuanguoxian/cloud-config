@@ -6,7 +6,7 @@ spring:
 spring:
   profiles: eureka7001
   application:
-    name: cloud-config-eureka-server-7001
+    name: cloud-config-eureka-server
 server:
   port: 7001
 eureka:
@@ -21,7 +21,7 @@ eureka:
 spring:
   profiles: eureka7002
   application:
-    name: cloud-config-eureka-server-7002
+    name: cloud-config-eureka-server
 server:
   port: 7002
 eureka:
@@ -36,7 +36,7 @@ eureka:
 spring:
   profiles: eureka7003
   application:
-    name: cloud-config-eureka-server-7003
+    name: cloud-config-eureka-server
 server:
   port: 7003
 eureka:
