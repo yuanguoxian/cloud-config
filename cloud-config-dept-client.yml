@@ -56,7 +56,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource        # 指定数据源操作类型
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/cloudDB01
+    url: jdbc:mysql://localhost:3306/cloudDB02
     driver-class-name: com.mysql.cj.jdbc.Driver         # org.gjt.mm.mysql.Driver
     dbcp2:
       min-idle: 5
