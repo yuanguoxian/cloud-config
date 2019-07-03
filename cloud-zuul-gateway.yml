@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+# 端口
+server:
+  port: 9527
+spring:
+  profiles: dev
+  application:
+    name: cloud-zuul-gateway
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true 
+zuul:
+  ignored-services: "*"
+  prefix: /cloud
+  routes:
+    mydept.serviceId: cloud-provider-dept
+    mydept.path: /mydept/**
+    
+feign:
+  hystrix:
+    enabled: true
+# 应用信息
+info: 
+  app.name: myzuul.com
+  company.name: www.cloud.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
